@@ -19,20 +19,40 @@ var level = 0;
 
 // ----- Start the game -----
 
-// Detect the first key press anywhere on the page to start the game
-$(document).keypress(function() {
+// Starts a new game (used by both the keyboard and the Start button)
+function startGame() {
   if (!started) {
+    started = true;
+
+    // Hide the Start button while playing (the hiding is done in styles.css)
+    $("body").addClass("playing");
+
     // Show the level in the heading (note: nextSequence() increments it to 1)
     $("#level-title").text("Level " + level);
     nextSequence();
-    started = true;
   }
+}
+
+// Computers: press any key to start
+$(document).keypress(function() {
+  startGame();
+});
+
+// Phones and computers: tap or click the Start button to start
+$("#start-btn").click(function() {
+  startGame();
 });
 
 // ----- Handle player clicks -----
 
 // Runs whenever the player clicks one of the coloured buttons
 $(".btn").click(function() {
+
+  // Ignore taps on the colours before the game has started
+  // (otherwise the first tap on a phone would end the game straight away)
+  if (!started) {
+    return;
+  }
 
   // The button's id is its colour (e.g. "red")
   var userChosenColour = $(this).attr("id");
@@ -69,7 +89,7 @@ function checkAnswer(currentLevel) {
     // Wrong click: play the "wrong" sound and flash the screen red
     playSound("wrong");
     $("body").addClass("game-over");
-    $("#level-title").text("Game Over, Press Any Key to Restart");
+    $("#level-title").text("Game Over, Press Any Key or Tap Restart");
 
     // Remove the red flash after 200 milliseconds
     setTimeout(function() {
@@ -120,7 +140,9 @@ function animatePress(currentColor) {
 // Plays the sound file that matches the given name (a colour, or "wrong")
 function playSound(name) {
   var audio = new Audio("sounds/" + name + ".mp3");
-  audio.play();
+
+  // Some phones block a sound now and then; ignore it so the game keeps going
+  audio.play().catch(function() {});
 }
 
 // Resets the game state after a wrong answer
@@ -128,4 +150,8 @@ function startOver() {
   level = 0;
   gamePattern = [];
   started = false;
+
+  // Show the button again, now saying "Restart"
+  $("#start-btn").text("Restart");
+  $("body").removeClass("playing");
 }
