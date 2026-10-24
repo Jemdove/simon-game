@@ -1,0 +1,114 @@
+body {
+  text-align: center;
+  background-color: #011F3F;
+}
+
+#level-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  margin:  5%;
+  color: #FEF2BF;
+}
+
+.container {
+  display: block;
+  width: 50%;
+  margin: auto;
+
+}
+
+.btn {
+  margin: 25px;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+  border-radius: 20%;
+}
+
+.game-over {
+  background-color: red;
+  opacity: 0.8;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
+
+/* keep each pair of buttons on one line */
+.row {
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   MEDIA QUERIES
+   The buttons and title get smaller as the screen gets narrower,
+   so the 4 colours always stay in a 2 x 2 square.
+   ===================================================== */
+
+/* Tablets and small laptops (900px wide or less) */
+@media (max-width: 900px) {
+  #level-title {
+    font-size: 2.2rem;
+    line-height: 1.5;
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  .btn {
+    width: 150px;
+    height: 150px;
+    margin: 15px;
+    border-width: 8px;
+  }
+}
+
+/* Phones (600px wide or less) */
+@media (max-width: 600px) {
+  #level-title {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 12% 5% 8%;
+  }
+
+  .btn {
+    width: 120px;
+    height: 120px;
+    margin: 12px;
+    border-width: 8px;
+  }
+}
+
+/* Small phones (380px wide or less) */
+@media (max-width: 380px) {
+  #level-title {
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border-width: 6px;
+  }
+}
