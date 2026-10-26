@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- dark navy tile (the game's background colour) -->
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="#011F3F"/>
+
+  <!-- the four Simon buttons, same colours and black borders as the game -->
+  <rect x="7"  y="7"  width="23" height="23" rx="6" fill="#008000" stroke="#000000" stroke-width="3"/>
+  <rect x="34" y="7"  width="23" height="23" rx="6" fill="#ff0000" stroke="#000000" stroke-width="3"/>
+  <rect x="7"  y="34" width="23" height="23" rx="6" fill="#ffff00" stroke="#000000" stroke-width="3"/>
+  <rect x="34" y="34" width="23" height="23" rx="6" fill="#0000ff" stroke="#000000" stroke-width="3"/>
+
+  <!-- small shine on the red button, like it has just lit up -->
+  <rect x="38" y="11" width="8" height="4" rx="2" fill="#ffffff" opacity="0.7"/>
+</svg>
